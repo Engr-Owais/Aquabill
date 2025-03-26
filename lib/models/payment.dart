@@ -7,13 +7,13 @@ enum PaymentMode {
   @HiveField(0)
   cash,
   @HiveField(1)
-  upi,
+  card,
   @HiveField(2)
   bankTransfer,
   @HiveField(3)
   cheque,
   @HiveField(4)
-  other
+  other,
 }
 
 @HiveType(typeId: 2)

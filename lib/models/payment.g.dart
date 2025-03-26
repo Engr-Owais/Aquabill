@@ -62,7 +62,7 @@ class PaymentModeAdapter extends TypeAdapter<PaymentMode> {
       case 0:
         return PaymentMode.cash;
       case 1:
-        return PaymentMode.upi;
+        return PaymentMode.card;
       case 2:
         return PaymentMode.bankTransfer;
       case 3:
@@ -80,7 +80,7 @@ class PaymentModeAdapter extends TypeAdapter<PaymentMode> {
       case PaymentMode.cash:
         writer.writeByte(0);
         break;
-      case PaymentMode.upi:
+      case PaymentMode.card:
         writer.writeByte(1);
         break;
       case PaymentMode.bankTransfer:

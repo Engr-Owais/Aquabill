@@ -42,17 +42,7 @@ class CustomerDetailScreen extends ConsumerWidget {
         totalPaid > totalAmount ? totalPaid - totalAmount : 0;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(customer.name),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.edit),
-            onPressed: () {
-              // TODO: Navigate to edit customer screen
-            },
-          ),
-        ],
-      ),
+      appBar: AppBar(title: Text(customer.name)),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [

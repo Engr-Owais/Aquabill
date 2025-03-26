@@ -1,3 +1,4 @@
+import 'package:aqua_bill/screens/payment/advance_payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -433,13 +434,13 @@ class HomePage extends ConsumerWidget {
                 ),
                 TextButton.icon(
                   onPressed: () {
-                    // TODO: Navigate to advance payments screen
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const AdvancePaymentsScreen(),
-                    //   ),
-                    // );
+                    //TODO: Navigate to advance payments screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AdvancePaymentsScreen(),
+                      ),
+                    );
                   },
                   icon: const Icon(Icons.arrow_forward),
                   label: const Text('See Details'),

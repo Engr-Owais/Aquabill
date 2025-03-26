@@ -19,11 +19,21 @@ final customerPaymentsProvider = Provider.family<List<Payment>, String>((
 });
 
 class PaymentListNotifier extends StateNotifier<List<Payment>> {
-  PaymentListNotifier() : super([]);
+  final _databaseService = DatabaseService();
+  
+  PaymentListNotifier() : super([]) {
+    // Load payments when the provider is initialized
+    loadPayments();
+  }
 
   Future<void> loadPayments() async {
-    final payments = await DatabaseService().getPayments();
-    state = payments;
+    try {
+      final payments = await _databaseService.getPayments();
+      state = payments;
+    } catch (e) {
+      print('Error loading payments: $e');
+      state = [];
+    }
   }
 
   Future<void> addPayment({
@@ -32,21 +42,31 @@ class PaymentListNotifier extends StateNotifier<List<Payment>> {
     required DateTime date,
     required PaymentMode mode,
   }) async {
-    final payment = Payment(
-      id: DateTime.now().toIso8601String(),
-      customerId: customerId,
-      amount: amount,
-      date: date,
-      mode: mode,
-    );
+    try {
+      final payment = Payment(
+        id: DateTime.now().toIso8601String(),
+        customerId: customerId,
+        amount: amount,
+        date: date,
+        mode: mode,
+      );
 
-    await DatabaseService().savePayment(payment);
-    state = [...state, payment];
+      await _databaseService.savePayment(payment);
+      await loadPayments(); // Reload payments from database after saving
+    } catch (e) {
+      print('Error adding payment: $e');
+      rethrow;
+    }
   }
 
   Future<void> deletePayment(String id) async {
-    await DatabaseService().deletePayment(id);
-    state = state.where((payment) => payment.id != id).toList();
+    try {
+      await _databaseService.deletePayment(id);
+      await loadPayments(); // Reload payments from database after deleting
+    } catch (e) {
+      print('Error deleting payment: $e');
+      rethrow;
+    }
   }
 }
 
