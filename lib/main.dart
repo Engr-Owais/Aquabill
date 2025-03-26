@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:aqua_bill/providers/customer_provider.dart';
-import 'package:aqua_bill/providers/delivery_provider.dart';
-import 'package:aqua_bill/providers/payment_provider.dart';
-import 'package:aqua_bill/screens/customer/customer_form_screen.dart';
-import 'package:aqua_bill/screens/customer/customer_list_screen.dart';
-import 'package:aqua_bill/screens/delivery/delivery_form_screen.dart';
-import 'package:aqua_bill/screens/delivery/today_deliveries_screen.dart';
-import 'package:aqua_bill/screens/payment/payment_form_screen.dart';
-import 'package:aqua_bill/screens/payment/today_payments_screen.dart';
-import 'package:aqua_bill/screens/reports/monthly_report_screen.dart';
-import 'package:aqua_bill/screens/payment/pending_payments_screen.dart';
 import 'package:aqua_bill/screens/splash/splash_screen.dart';
 import 'package:aqua_bill/services/database_service.dart';
-import 'package:aqua_bill/models/payment.dart';
-import 'package:intl/intl.dart';
+
 import 'package:aqua_bill/theme/app_theme.dart';
 
 void main() async {
