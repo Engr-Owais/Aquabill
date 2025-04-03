@@ -77,17 +77,8 @@ class _AddCustomerScreenState extends ConsumerState<AddCustomerScreen> {
               keyboardType: TextInputType.phone,
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
-                LengthLimitingTextInputFormatter(10),
+                LengthLimitingTextInputFormatter(13),
               ],
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a phone number';
-                }
-                if (value.length != 10) {
-                  return 'Phone number must be 10 digits';
-                }
-                return null;
-              },
             ),
             const SizedBox(height: 16),
             TextFormField(
@@ -114,16 +105,6 @@ class _AddCustomerScreenState extends ConsumerState<AddCustomerScreen> {
                         RegExp(r'^\d+\.?\d{0,2}'),
                       ),
                     ],
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter bottle rate';
-                      }
-                      final rate = double.tryParse(value);
-                      if (rate == null || rate <= 0) {
-                        return 'Enter a valid rate';
-                      }
-                      return null;
-                    },
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -136,16 +117,6 @@ class _AddCustomerScreenState extends ConsumerState<AddCustomerScreen> {
                     ),
                     keyboardType: TextInputType.number,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter bottles';
-                      }
-                      final bottles = int.tryParse(value);
-                      if (bottles == null || bottles <= 0) {
-                        return 'Enter valid number';
-                      }
-                      return null;
-                    },
                   ),
                 ),
               ],
